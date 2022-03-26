@@ -22,7 +22,6 @@
     export const showActionValue = (e, value) => {
         let btn = document.querySelector('.center-btn__btn')
         btn.addEventListener('contextmenu', event => event.preventDefault());
-        debugger
         if (e.which === 1) {
             console.log('use action',value);                        
         } else if (e.which ==3) {
@@ -40,7 +39,7 @@
 
 
 <nav>
-    <div class="settings">Settings-Block</div>			
+    <div class="settings"><h2>⚙️</h2></div>			
     <ul class="circle-menu">
         <li class="page slice">
             <!-- svelte-ignore a11y-mouse-events-have-key-events -->
@@ -84,8 +83,7 @@
                     <h3 style="color: white; margin: 0">{actionTitle}</h3>
                     <p>Нажмите для<br>использования</p>
                 </div>                
-            </div>			
-            
+            </div>
         </li>
     </ul>		
 </nav>

@@ -1,14 +1,3 @@
-.Circle {
-  height: 200px;
-  width: 200px;
-  border-radius: 100%;
-
-  & p {
-    font-size: 1.3rem;
-    color: blue;
-  }
-}
-
 .settings {
   margin-left: auto;
   margin-right: 30px;
@@ -17,6 +6,13 @@
   height: 70px;
   background: #211f40;
   border-radius: 50%;
+
+  & h2 {
+    margin: 0 auto;
+    text-align: center;
+    padding: 5px;
+    font-size: 45px;
+  }
 }
 
 .circle-menu,
@@ -51,6 +47,7 @@
       cursor: pointer;
     }
   }
+
   &:hover {
     opacity: 0.8;
     cursor: pointer;
@@ -64,6 +61,7 @@
         font-size: 28px;
         margin: 0;
       }
+
       & p {
         text-align: center;
         color: gray;
@@ -123,7 +121,7 @@ nav {
     border: 0;
     font-size: 54px;
     opacity: 1;
-    background: black;
+    background: rgba(0, 0, 0, 0);
     border-radius: 0;
   }
 }
@@ -134,40 +132,65 @@ nav {
 
 .page {
   transform: skewX(47deg);
+
   & button {
-    transform: skewX(-47deg);
+    transform: skewX(-47deg) scale(1.3);
   }
 }
+
 .handshake {
   transform: rotate(45deg) skewX(47deg);
-}
-.handshake button {
-  transform: rotate(-45deg) skewX(47deg);
-}
-.shush {
-  transform: rotate(90deg) skewX(47deg);
-}
-.greeting {
-  transform: rotate(135deg) skewX(47deg);
-}
-.greeting button {
-  transform: rotate(-75deg) skewX(40deg);
-}
-.cross {
-  transform: rotate(180deg) skewX(47deg);
+
   & button {
-    transform: rotate(-180deg) skewX(-47deg);
+    transform: rotate(1deg) skewX(-6deg) skewY(-28deg) scale(1.5);
   }
 }
+
+.shush {
+  transform: rotate(90deg) skewX(47deg);
+
+  & button {
+    background: none;
+    transform: rotate(-65deg) skewX(30deg) skewY(30deg) scale(1.2);
+  }
+}
+
+.greeting {
+  transform: rotate(135deg) skewX(47deg);
+
+  & button {
+    transform: rotate(-65deg) skewX(47deg) scale(1.3);
+  }
+}
+
+.cross {
+  transform: rotate(180deg) skewX(47deg);
+
+  & button {
+    transform: rotate(-180deg) skewX(-47deg) scale(1.3);
+  }
+}
+
 .kiss {
   transform: rotate(-135deg) skewX(47deg);
+
+  & button {
+    transform: rotate(183deg) scale(1.2) skewX(-22deg) skewY(-40deg) scale(1.1);
+  }
 }
-.kiss button {
-  transform: rotate(135deg) skewX(47deg);
-}
+
 .car {
   transform: rotate(-90deg) skewX(47deg);
+
+  & button {
+    transform: rotate(131deg) skewX(35deg) skewY(4deg) scale(1.4);
+  }
 }
+
 .biceps {
   transform: rotate(-45deg) skewX(47deg);
+
+  & button {
+    transform: rotate(80deg) scale(1.2);
+  }
 }
