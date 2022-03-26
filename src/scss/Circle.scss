@@ -1,0 +1,143 @@
+.Circle {
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+
+  & p {
+    font-size: 1.3rem;
+    color: blue;
+  }
+}
+
+.settings {
+  margin-left: auto;
+  margin-right: 30px;
+  color: white;
+  width: 70px;
+  height: 70px;
+  background: #211f40;
+  border-radius: 50%;
+}
+
+.circle-menu,
+.circle-menu:before,
+.circle-menu:after {
+  margin: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.center {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0 0 0.75em;
+  background: #211f40;
+
+  & button {
+    display: block;
+    margin: 0 auto;
+    font-size: 120px;
+    border: none;
+    height: 100%;
+    /*background: radial-gradient(rgba(0,0,0,.5), transparent 50%);*/
+    background: radial-gradient(rgba(80, 12, 168, 0.315), transparent 50%);
+  }
+}
+
+nav {
+  position: relative;
+  margin: 5em auto;
+  min-width: 16em;
+  width: 72%;
+  max-width: 40em;
+
+  & ul {
+    position: relative;
+    padding: 50%;
+    max-width: 0;
+    max-height: 0;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.5);
+    list-style: none;
+  }
+
+  & li {
+    position: absolute;
+    transition: 0s;
+    /*background: linear-gradient(to left top, rgb(22, 74, 151), white);*/
+    background: linear-gradient(to left top, rgb(7, 44, 100), white);
+    opacity: 0.5;
+
+    & :hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.slice {
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 50%;
+  transform-origin: 100% 100%;
+
+  & button {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    left: 190px;
+    top: 180px;
+    border: 0;
+    font-size: 54px;
+    opacity: 1;
+    background: black;
+    border-radius: 0;
+  }
+}
+
+.slice:hover {
+  opacity: 0.8;
+}
+
+.page {
+  transform: skewX(47deg);
+  & button {
+    transform: skewX(-47deg);
+  }
+}
+.handshake {
+  transform: rotate(45deg) skewX(47deg);
+}
+.handshake button {
+  transform: rotate(-45deg) skewX(47deg);
+}
+.shush {
+  transform: rotate(90deg) skewX(47deg);
+}
+.greeting {
+  transform: rotate(135deg) skewX(47deg);
+}
+.greeting button {
+  transform: rotate(-75deg) skewX(40deg);
+}
+.cross {
+  transform: rotate(180deg) skewX(47deg);
+  & button {
+    transform: rotate(-180deg) skewX(-47deg);
+  }
+}
+.kiss {
+  transform: rotate(-135deg) skewX(47deg);
+}
+.kiss button {
+  transform: rotate(135deg) skewX(47deg);
+}
+.car {
+  transform: rotate(-90deg) skewX(47deg);
+}
+.biceps {
+  transform: rotate(-45deg) skewX(47deg);
+}
