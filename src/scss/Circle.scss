@@ -34,15 +34,42 @@
   height: 50%;
   box-shadow: 0 0 0.75em;
   background: #211f40;
+  opacity: 0.8;
 
   & button {
     display: block;
     margin: 0 auto;
+    padding-top: 20px;
+    padding-bottom: 0;
     font-size: 120px;
     border: none;
     height: 100%;
-    /*background: radial-gradient(rgba(0,0,0,.5), transparent 50%);*/
     background: radial-gradient(rgba(80, 12, 168, 0.315), transparent 50%);
+    opacity: 1;
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+  & .center-btn {
+    & .center-btn__text {
+      & h3 {
+        text-align: center;
+        color: white;
+        font-size: 28px;
+        margin: 0;
+      }
+      & p {
+        text-align: center;
+        color: gray;
+        margin: 0;
+      }
+    }
   }
 }
 
@@ -65,12 +92,15 @@ nav {
   & li {
     position: absolute;
     transition: 0s;
-    /*background: linear-gradient(to left top, rgb(22, 74, 151), white);*/
     background: linear-gradient(to left top, rgb(7, 44, 100), white);
     opacity: 0.5;
 
-    & :hover {
+    &:hover {
       opacity: 0.8;
+    }
+
+    &:nth-child(5) {
+      background: linear-gradient(to left top, rgb(202, 4, 4), black);
     }
   }
 }
