@@ -1,8 +1,6 @@
-<script>    
-    export const emoji = ['📄', '🤝', '🤫', '👋', '❌', '😘', '🚘', '💪']
-	export const arr = ['page', 'handshake', 'shush', 'greeting', 'cross', 'kiss', 'car', 'biceps'];
-	export const arrRus = ['Записать', 'Пожать руку', 'Тихо!', 'Поздороваться', 'Закрыть', 'Love', 'Авто', 'Power Up'];
-
+<script>
+    import {arr, emoji, arrRus} from './constants/constans'
+    
     export let centerImg = '👋';
 
 	export let itemValue = 'greeting';
@@ -39,7 +37,7 @@
 
 
 <nav>
-    <div class="settings"><h2>⚙️</h2></div>			
+    <div class="settings" on:click={()=>console.log('settings')}><h2>⚙️</h2></div>			
     <ul class="circle-menu">
         <li class="page slice">
             <!-- svelte-ignore a11y-mouse-events-have-key-events -->
@@ -70,11 +68,8 @@
             <button class="circle-menu" value={arr[6]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[6]}</button>
         </li>
         <li class="biceps slice">
-            <div>
-                <b>{emoji[7]}</b>
-                <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-                <button class="circle-menu" value={arr[7]} on:mouseover={(e)=>mouseHandler(e)} >{emoji[7]}</button>
-            </div>								
+            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+            <button class="circle-menu" value={arr[7]} on:mouseover={(e)=>mouseHandler(e)} >{emoji[7]}</button>        
         </li>
         <li class="center circle-menu">	
             <div class="center-btn">

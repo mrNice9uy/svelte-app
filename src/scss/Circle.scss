@@ -13,6 +13,10 @@
     padding: 5px;
     font-size: 45px;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .circle-menu,
@@ -191,6 +195,6 @@ nav {
   transform: rotate(-45deg) skewX(47deg);
 
   & button {
-    transform: rotate(80deg) scale(1.2);
+    transform: rotate(90deg) skew(20deg) scale(1.4);
   }
 }
