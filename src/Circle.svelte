@@ -76,7 +76,12 @@
   </div>
   <ul class="circle-menu" bind:this={navList}>
     <li class="cross slice">
-      <button class="circle-menu item" value="cross">{cross}</button>
+      <!-- svelte-ignore a11y-mouse-events-have-key-events -->
+      <button
+        class="circle-menu item"
+        on:mouseover={(e) => mouseHandler(e)}
+        value="cross">{cross}</button
+      >
     </li>
     <li class="center circle-menu">
       <div class="center-btn">
