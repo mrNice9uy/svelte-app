@@ -1,15 +1,11 @@
 <script>
-	import Circle from './Circle.svelte';
-	import {arr, emoji} from './constants/constans'		
+  import Circle from "./Circle.svelte";
+  import { arr, emoji } from "./constants/constans";
 </script>
 
-
-<main id='main'>	
-	<Circle arr={arr} emoji={emoji} />
+<main id="main">
+  <Circle {arr} {emoji} />
 </main>
 
-
-
 <style>
-	
 </style>
