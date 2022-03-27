@@ -50,6 +50,9 @@
       opacity: 1;
       cursor: pointer;
     }
+    &:active {
+      background: none;
+    }
   }
 
   &:hover {

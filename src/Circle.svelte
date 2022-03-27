@@ -1,9 +1,11 @@
 <script>
+  import { onMount } from "svelte";
   export let arr;
   export let emoji;
 
-  export let nav = "";
-  export let btns = "";
+  export let navList = "";
+  export let items = "";
+  export let centerBtn = "";
 
   export let centerImg = "👋";
   export const cross = "❌";
@@ -22,12 +24,20 @@
   };
 
   export const showActionValue = (e, value) => {
-    let btn = document.querySelector(".center-btn__btn");
-    btn.addEventListener("contextmenu", (event) => event.preventDefault());
     if (e.which === 1) {
       console.log("use action", value);
     } else if (e.which == 3) {
+      centerBtn.addEventListener(
+        "contextmenu",
+        (event) => event.preventDefault(),
+        false
+      );
       console.log("delete action", value);
+      centerBtn.removeEventListener(
+        "contextmenu",
+        (event) => event.preventDefault(),
+        false
+      );
       return false;
     }
   };
@@ -45,31 +55,26 @@
                 <button class="circle-menu item" value=${item} >${emoji[item].pic}</button>
             </li>
             `;
-      nav.insertAdjacentHTML("afterBegin", markup);
+      navList.insertAdjacentHTML("afterBegin", markup);
     });
   };
 
-  document.addEventListener(
-    "DOMContentLoaded",
-    () => {
-      nav = document.getElementById("navList");
-      showNav(arr, emoji);
-      btns = document.querySelectorAll(".item");
-      btns.forEach((btn) => {
-        btn.addEventListener("mouseover", (e) => {
-          mouseHandler(e);
-        });
+  onMount(() => {
+    showNav(arr, emoji);
+    items = navList.children;
+    for (let i = 0; i < items.length; i++) {
+      items[i].childNodes[1]?.addEventListener("mouseover", (e) => {
+        mouseHandler(e);
       });
-    },
-    false
-  );
+    }
+  });
 </script>
 
-<nav id="nav">
+<nav>
   <div class="settings" on:click={() => console.log("settings")}>
     <h2>⚙️</h2>
   </div>
-  <ul id="navList" class="circle-menu">
+  <ul class="circle-menu" bind:this={navList}>
     <li class="cross slice">
       <button class="circle-menu item" value="cross">{cross}</button>
     </li>
@@ -77,6 +82,7 @@
       <div class="center-btn">
         <button
           class="center-btn__btn"
+          bind:this={centerBtn}
           on:mousedown={(e) => showActionValue(e, itemValue)}
           >{centerImg}</button
         >
