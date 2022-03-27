@@ -1,7 +1,6 @@
 <script>        
     export let arr;
     export let emoji;
-    export let arrRus;
 
     export let nav = '';
     export let btns = '';
@@ -15,13 +14,11 @@
     export let actionTitle = 'Поздороваться';
 
 	export const setCenterImg = (value) => {
-        let idx = arr.findIndex(item => item === value);
-        return (value === 'cross') ? cross : emoji[idx]        
+        return (value === 'cross') ? cross : emoji[value].pic        
 	}
 
-    export const setActionTitle = (value) => {
-        let idx = arr.findIndex(item => item === value);
-        return (value === 'cross') ? croossTitle : arrRus[idx];        
+    export const setActionTitle = (value) => {        
+        return (value === 'cross') ? croossTitle : emoji[value].title;        
     }
 
     export const showActionValue = (e, value) => {
@@ -41,11 +38,12 @@
         actionTitle = setActionTitle(itemValue)
 	}
 
-    export const showNav = (arr, emoji, arrRus)=> {        
-        arr.forEach((item, i) => {
+    export const showNav = (arr, emoji)=> {        
+        arr.forEach((item) => {
+            debugger;
             let markup = `
             <li class="${item} slice">            
-                <button class="circle-menu item" value=${item} >${emoji[i]}</button>
+                <button class="circle-menu item" value=${item} >${emoji[item].pic}</button>
             </li>
             `
             nav.insertAdjacentHTML('afterBegin', markup);
@@ -54,7 +52,7 @@
 
     document.addEventListener('DOMContentLoaded', () => {
        nav = document.getElementById('navList');    
-       showNav(arr, emoji, arrRus);
+       showNav(arr, emoji);
        btns = document.querySelectorAll('.item');
        btns.forEach((btn) => {
            btn.addEventListener('mouseover', (e) => {
@@ -68,11 +66,9 @@
 <nav id='nav'>
     <div class="settings" on:click={()=>console.log('settings')}><h2>⚙️</h2></div>			
     <ul id='navList' class="circle-menu">             
-        <li class="cross slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu item" value='cross' on:mouseover={(e)=>mouseHandler(e)}>{cross}</button>
+        <li class="cross slice">            
+            <button class="circle-menu item" value='cross'>{cross}</button>
         </li>
-        
         <li class="center circle-menu">	
             <div class="center-btn">
                 <button class="center-btn__btn" on:mousedown={(e)=> showActionValue(e, itemValue)}>{centerImg}</button>
