@@ -1,20 +1,27 @@
-<script>
-    import {arr, emoji, arrRus} from './constants/constans'
+<script>        
+    export let arr;
+    export let emoji;
+    export let arrRus;
+
+    export let nav = '';
+    export let btns = '';
     
-    export let centerImg = '👋';
+    export let centerImg = '👋'; 
+    export const cross = "❌";
+    export const croossTitle = 'Закрыть'
 
 	export let itemValue = 'greeting';
 
     export let actionTitle = 'Поздороваться';
 
 	export const setCenterImg = (value) => {
-		let idx = arr.findIndex(item => item === value);
-		return emoji[idx];
+        let idx = arr.findIndex(item => item === value);
+        return (value === 'cross') ? cross : emoji[idx]        
 	}
 
     export const setActionTitle = (value) => {
         let idx = arr.findIndex(item => item === value);
-        return arrRus[idx];
+        return (value === 'cross') ? croossTitle : arrRus[idx];        
     }
 
     export const showActionValue = (e, value) => {
@@ -28,49 +35,44 @@
         }
     }
 
-	export const mouseHandler = (e) => {
-		itemValue = e.target.value;
+	export const mouseHandler = (event) => {
+		itemValue = event.target.value;
 		centerImg = setCenterImg(itemValue);
         actionTitle = setActionTitle(itemValue)
 	}
+
+    export const showNav = (arr, emoji, arrRus)=> {        
+        arr.forEach((item, i) => {
+            let markup = `
+            <li class="${item} slice">            
+                <button class="circle-menu item" value=${item} >${emoji[i]}</button>
+            </li>
+            `
+            nav.insertAdjacentHTML('afterBegin', markup);
+        })                        
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+       nav = document.getElementById('navList');    
+       showNav(arr, emoji, arrRus);
+       btns = document.querySelectorAll('.item');
+       btns.forEach((btn) => {
+           btn.addEventListener('mouseover', (e) => {
+               mouseHandler(e);
+       })
+    })      
+    }, false);        
 </script>
 
 
-<nav>
+<nav id='nav'>
     <div class="settings" on:click={()=>console.log('settings')}><h2>⚙️</h2></div>			
-    <ul class="circle-menu">
-        <li class="page slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[0]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[0]}</button>
-        </li>
-        <li class="handshake slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[1]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[1]}</button>
-        </li>
-        <li class="shush slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[2]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[2]}</button>
-        </li>
-        <li class="greeting slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[3]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[3]}</button>
-        </li>
+    <ul id='navList' class="circle-menu">             
         <li class="cross slice">
             <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[4]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[4]}</button>
+            <button class="circle-menu item" value='cross' on:mouseover={(e)=>mouseHandler(e)}>{cross}</button>
         </li>
-        <li class="kiss slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[5]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[5]}</button>
-        </li>
-        <li class="car slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[6]} on:mouseover={(e)=>mouseHandler(e)}>{emoji[6]}</button>
-        </li>
-        <li class="biceps slice">
-            <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-            <button class="circle-menu" value={arr[7]} on:mouseover={(e)=>mouseHandler(e)} >{emoji[7]}</button>        
-        </li>
+        
         <li class="center circle-menu">	
             <div class="center-btn">
                 <button class="center-btn__btn" on:mousedown={(e)=> showActionValue(e, itemValue)}>{centerImg}</button>
@@ -79,6 +81,6 @@
                     <p>Нажмите для<br>использования</p>
                 </div>                
             </div>
-        </li>
+        </li>        
     </ul>		
 </nav>

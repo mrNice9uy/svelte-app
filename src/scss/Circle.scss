@@ -100,10 +100,6 @@ nav {
     &:hover {
       opacity: 0.8;
     }
-
-    &:nth-child(5) {
-      background: linear-gradient(to left top, rgb(202, 4, 4), black);
-    }
   }
 }
 
@@ -168,6 +164,7 @@ nav {
 }
 
 .cross {
+  background: linear-gradient(to left top, rgb(202, 4, 4), black);
   transform: rotate(180deg) skewX(47deg);
 
   & button {
